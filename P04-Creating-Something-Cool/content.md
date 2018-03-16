@@ -1,73 +1,74 @@
 ---
-title: "Create Something Cool"
+title: "かっこいい絵を描いてみよう"
 slug: create-something-cool
 ---
 
 > [challenge]
-> Use everything you learned to draw something awesome! See below for a few more functions you can use to bring your art to life!
+> これまでに習ったことを使って、何かかっこいい絵を描いてみましょう！他にも使えるツールを紹介します:
+
 >
-> You should do this in `runDrawing()` and any create functions that will help you!
+> `runDrawing()`や、新しく作る関数の中で使いましょう
 
-# Drop and lift the pen
+# ペンを置いたり離したりする
 
-## Drop the pen
+## ペンを置く
 ```
 penDown()
 ```
 
-## Lift the pen
+## ペンを離す
 ```
 penUp()
 ```
 
 > [info]
-> The pen starts out down.
+> 初めはペンを置いた状態からスタートしています。
 
-# Moving the pen
+# ペンを動かす
 
-## Move by a number of steps
+## stepだけペンを動かす
 ```
 move(steps: Int)
 ```
 
-## Move directly to coordinates
+## x, yへペンを動かす
 ```
 moveTo(x: Int, y: Int)
 ```
 
-## Rotate heading by an angle
+## 回転させる
 ```
 rotate(degrees: Int)
 ```
 
-# Change the pen
+# ペンを変える
 
-## Set color of pen
+## ペンの色を変える
 ```
 setColor(red: Double, green: Double, blue: Double)
 ```
 
 > [info]
-> This is called with labels for all 3 parameters! Each value should be between 0 and 1. For example...
+> それぞれの値は0から1の間で設定します。
 >
 ```
 setColor(red: 0.0, green: 0.0, blue: 0.0)
 ```
 >
-would change the pen to be black.
+これはペンを黒にセットします。
 >
 ```
 setColor(red: 1.0, green: 0.0, blue: 0.0)
 ```
 >
-would change the pen to be red.
+これはペンを赤にセットします。
 
-## Set thickness of pen
+## ペンの太さを変える
 ```
 set(thickness: Double)
 ```
 
-## Make the pen move faster
+## ペンの動きを変える
 ```
 set(delay: Double)
 ```

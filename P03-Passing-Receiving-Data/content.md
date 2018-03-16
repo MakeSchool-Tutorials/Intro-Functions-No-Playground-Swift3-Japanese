@@ -1,71 +1,72 @@
 ---
-title: "Smarter Functions"
+title: "もっと賢い関数"
 slug: passing-receiving-data
 ---
 
-## Function parameters
+## 関数のパラメタ
 
-Have you been wondering why there are parentheses after function calls? It's not just so they look different from variables. It's because you can sometimes pass data to functions!
+ところで関数を呼び出すコードの最後にカッコが付いているのを不思議に思いませんでしたか？変数と見た目を変えるためではありませんよ。関数にデータを入れることもあるからです。
 
-So far, we have been using the hardcoded `moveFifty()` and `rotateNinety()` functions. While this works, wouldn't it be nicer to be able to say `move(steps: 75)`? Try it out inside your `runDrawing` function!
+ここまでは、ハードコードで`moveFifty()` と `rotateNinety()`を入力してきました。これでも問題ありませんが、 `move(steps: 75)`と入力する方が楽ではないですか？下のスペースで試してみましょう。
 
 > [challenge]
 >
-- Can you move `25` units? `250` units? What about negative values?
-- Can you figure out how to rotate custom amounts? Can you rotate clockwise instead of counter-clockwise?
-- Can you combine these to draw a triangle (3 sides)? A pentagon (5 sides)? How about a hexagon (6 sides)?
+- `25`単位分動かせますか？`250`単位分はどうでしょう？マイナス値は？
+- 特定の角度を回転させる方法が分かりますか？半時計回りではなく、時計回りで回転させられますか？
+- これらを組み合わせて、三角形(3辺)を描けますか？五角形(5辺)はどうでしょう？六角形(6辺)は？
 
-## Recap
+## 復習
 
-We can call both `move(steps: 50)` and `rotate(degrees: 90)` to get the same outcome as `moveFifty()` and `rotateNinety()`. You can put _any_ whole number in the parentheses and move custom amounts! The value we put in the parentheses is a _function parameter_. `steps` and `degrees` are both _function parameter names_.
+ `move(steps: 50)` と `rotate(degrees: 90)`の両方を呼び出すと、`moveFifty()`と`rotateNinety()`と同じ結果が得られます。カッコに整数を入力して、任意の距離を動かせることができます。カッコに入力した整数のことを関数パラメタと言います。 `steps` と `degrees`はどちらも関数パラメタの名前です。
 
 # drawTriangle, drawPentagon, drawHexagon
 
-## Pseudocoding
+## 疑似コード
 
-Let's beef up our polygon drawing skills.
+多角形のお絵かきスキルをパワーアップさせましょう。紙とペンを出してください。Swiftのコードを書く前に紙にプロセスを書き出します。
 
 > [action]
-> Get out a pen and some paper. We'll be writing some pseudocode before we type out any Swift code.
+> 紙とペンを使って多角形を描いてみましょう。`move`関数や`rotate`関数をどのように使えばうまく描けるでしょうか？
 >
-> Go through the same exercise we did for squares but do it for triangles (3 sides), pentagons (5 sides), and hexagons (6 sides):
+> 四角を描いたのと同じように、今度は三角(3辺)、五角形(5辺)、六角形(6辺)を描きましょう。
 >
-> ## Test it out!
+> ## やってみよう!
 >
-> Draw the polygon with pen and paper. How would you use the `move` and `rotate` functions to draw that polygon? Write out each step. Read back each line of code to yourself and "perform" each function by hand. Did it work?
+> ステップをひとつずつ書き出し、それを声に出して読み返しながら模擬コードを手書きで「実行」してみましょう。うまくできましたか？
 >
-> ## Hint
+> ## ヒント
 >
-> Here's a little hint for those of you who haven't thought about geometry in a while. The angle you rotate is called the polygon's exterior angle. The exterior angle is the angle formed from the extension of one side to the extension of another.
->
-> You can calculate a polygon's exterior angle with the equation exteriorAngle = 360 / numberOfSides. You'll notice `360 / 4 = 90` which was correct for a square -- try it out on a few other polygons to confirm this should work!
+> 図形に長らく触れていない方のために補足です。回転角度は多角形の「外角」と言います。外角は辺と辺を伸ばした時に交差する角度と等しいものです。
 
-## Implementation
+>
+> Y多角形の外角はexteriorAngle = 360 / numberOfSidesという式で計算できます。 `360 / 4 = 90`は確かに四角の外角ですね。この式を他の多角形にも当てはめて、正しいことを確認しましょう。
 
-**Did you actually do the above exercise? If not, go back to _Pseudocoding_ and do it. Don't cheat yourself!**
+## 実装
+
+**ちゃんと手で描きましたか？もし飛ばしたなら「模擬コード」に戻ってやってみましょう。近道しないこと！**
 
 > [challenge]
-> Once you have functioning pseudocode for each of the polygons, take the time to translate your planned procedures into Swift. Define the `drawTriangle`, `drawPentagon`, and `drawHexagon` functions below `// custom functions go below here` but above `// custom functions go above here`. Make sure to test them by calling them from `runDrawing`!
+> それぞれの多角形の疑似コードができたところで、これらをSwiftコードに書き換える作業にうつります。 `drawTriangle`, `drawPentagon`,`drawHexagon` の3つの関数を定義して、それぞれ試してみましょう！
 
-# Passing Data to Functions
+# 関数にデータを入れ込む
 
-## Defining a function
+## 関数を定義する
 
-Previously, we've seen how to call functions with and without parameters but only how to define a function with no parameters. Let's review really quickly
+これまでは、パラメタのある関数、ない関数を呼び出し、パラメタのない関数は定義の書き方も覚えました。
 
-**Calling a function without parameters:**
+**パラメタのない関数を呼び出す:**
 
 ```
 functionName()
 ```
 
-**Calling a function with 1 parameter:**
+**パラメタを1つもつ関数を呼び出す:**
 
 ```
 functionName(parameterName: parameterValue)
 ```
 
-**Defining a function without parameters:**
+**パラメタのない関数を定義する:**
 
 ```
 func functionName() {
@@ -74,11 +75,11 @@ func functionName() {
 }
 ```
 
-Where `func` is the keyword used to define a function, followed by the function name, an empty pair of parentheses, and a pair of curly braces (`{` `}`) surrounding the code contained in the function.
+`func`のキーワードではじめ、関数の名前、カッコ、と入力し、関数のなかのコードは中カッコで挟みます。
 
-## Adding a parameter to your function definition
+## 関数の定義にパラメタを組み込む
 
-**The general form of a function with one parameter is:**
+**1つのパラメタをもつ関数の一般的な形：**
 
 ```
 func functionName(parameterOneName: parameterOneType) {
@@ -88,22 +89,22 @@ func functionName(parameterOneName: parameterOneType) {
 }
 ```
 
-If you compare this to the earlier functions we defined, you'll see the difference is the parameter name and type inside of the parentheses. It starts off with the same keyword `func`, followed by the function name, parentheses and curly braces. Remember, anything "inside" the curly braces gets indented once (one press of the tab key if Xcode doesn't do it for you automatically).
+これを先程書いた関数の定義と比べてみると、カッコの中にパラメタの名前とタイプが入力されているのが分かります。最初は同じキーワード`func`で書き出し、関数の名前、カッコ、中カッコと続きます。中カッコの中身はインデントすることを忘れずに！(Xcodeが自動的にインデントしない場合は、キーを押すだけ簡単にできます)
 
-A lot like the variables we defined before, parameters must specify their data type and you cannot call a function with anything of a different type. Parameter names are similar to variable names -- they should be concise and descriptive. Another programmer should know what they are going to be used for just by looking at their name.
+前に勉強した変数の定義と同じように、パラメタの定義でもデータタイプを指定する必要があり、異なるデータタイプの関数を呼び出すことはできません。パラメタの名前もまた、変数の名前に似ています。分かりやすく、短い名前を心掛けましょう。他のプロクラマーが見ても、何の役割があるのか一目瞭然であるのが理想的です。
 
-## Quick review of data types
+## データタイプの復習
 
-Data types describe information used in programming. They are important when defining variables/constants, performing operations on values, and passing parameters into functions. The basic data types you should be familiar with so far are:
+データタイプはプログラミングに使われている情報の種類を示します。変数や定数の定義、値の修正、関数にパラメタを入れ込む場合に重要となります。これまで3つのデータタイプを学びましたね。
 
-- `Int`: whole numbers, when divided they output integer division -- result is always rounded down!
-- `Double`: numbers with a decimal place
-- `String`: combination of letters, numbers, and other characters -- cannot be used for arithmetic even if the `String` contains only numbers! String types must be surrounded with double quotes (`"this is a string!"`)
+- `Int`: 整数、割り算で少数が出た場合は小数点以下が必ず切り捨てられる
+- `Double`: 少数
+- `String`: 英数字やその他記号の文字列、たとえ数字だけの文字列であっても計算式は作れない。Stringはダブルクオーテーションで挟まれている (`"これはstring!"`)
 
-## A more versatile drawSquare
+## より多目的なdrawSquare
 
 > [challenge]
-> Let's create a new `drawSquare` function that accepts a parameter for size. This will allow one function to create squares of multiple sizes! We've already started you out in the space below -- `drawSquare` takes one parameter named `sideLength` of type `Int` (a whole number). Copy this to where you have your other custom functions and fill out the function's body!
+> 大きさを規定するパラメタを含む、新しい`drawSquare`関数を作りましょう。これでひとつの関数で色々な大きさの四角形を描くことができます！下のスペースに途中まで書いています。`drawSquare`は`sideLength`という `Int`のデータタイプ(整数)のパラメタです。関数の中身を書き込みましょう。
 >
 ```
 func drawSquare(sideLength: Int) {
@@ -111,45 +112,45 @@ func drawSquare(sideLength: Int) {
 }
 ```
 >
-> Remember, `sideLength` becomes a constant inside of the function's body. You can directly use constants and variables as parameters when you call other functions! Test out your new method with a function call of `drawSquare(sideLength: 150)`.
+> `sideLength`は関数の中で定数となります。定数や変数は他の関数を呼び出す時にパラメタの役割をします。`drawSquare(sideLength: 150)`という関数を呼び出して新しい手法を試してみましょう。
 >
-> Make sure to call the drawSquare function after you have defined it! It needs to be called with a function parameter like we did on the previous page.
+> 定義を書いた後にはdrawSquare関数を呼び出すことを忘れずに！前のページで練習した通り、パラメタを含む形で呼び出す必要があります。
 
-## All working?
+## すべてうまくいきましたか？
 
 > [challenge]
-> Once you have the resizable `drawSquare` function working, do the same for `drawTriangle`, `drawPentagon`, and `drawHexagon`.
+> 大きさを調整できる`drawSquare`のコードがうまく実行できたら、`drawTriangle`, `drawPentagon`, `drawHexagon`も同じように変更してみましょう。
 
-# Repeating Code
+# コードを繰り返す
 
-## A quick intro to "loops"
+## "loops" の簡単な紹介
 
-Now that you've rewritten your polygon functions a few times, you may have started to see a general pattern for drawing polygons. Grab your pen and paper again, let's see if we can reduce the number of lines of code we are using.
+何度かポリゴン関数を書き直しましたが、もしかしたらもっと一般的にポリゴンが描きたくなるかもしれません、紙とペンを使って、今使っているコードをどうしたら減らすことができるか考えてみましょう。
 
-This time, see if you can rewrite each of your draw functions (`drawTriangle`, `drawSquare`, `drawPentagon`, and `drawHexagon`) so that they only reference `move` and `rotate` once each. How can you do this? We're going to add a new tool to your pseudocode toolbox: repeat _x_ times.
+今回は、`move`と`rotate`を１度ずつしか使わず、`drawTriangle`, `drawSquare`, `drawPentagon`, and `drawHexagon`を完成させる方法を考えてみましょう。
 
-If you were to write:
+次のように書くと...
 
 ```
 repeat 4 times
     move 10
 ```
 
-we would expect it to move a total of 40 units (10 units at a time).
+全部で40単位分(一度に10単位ずつ)動くことになります。
 
 > [action]
-> As usual, write it down then "run the code" yourself by following the directions as you hopefully draw out the polygon.
+> これまで通り、紙に書き出した模擬コードを自分で読み返し、コードを「実行」してポリゴンを描いてみましょう。
 
-## Looking good?
+## いい感じ？
 
-Time to translate this pseudocode into Swift! In Swift, the following pseudocode:
+擬似コードをSwiftに変換しましょう。
 
 ```
 repeat 4 times
     move 10
 ```
 
-would become:
+Swiftでは、上の擬似コードは下のように書き換えられます。
 
 ```
 for _ in 1...4 {
@@ -157,7 +158,7 @@ for _ in 1...4 {
 }
 ```
 
-We'll go further into the details of this _for-loop_ syntax in later exercises. Right now, all you need to know is that you can generalize it as this:
+for-loop構文は後で詳しく勉強しますが、今はこのように一般化できる、という事だけ知っておきましょう。
 
 ```
 for _ in 1...numberOfTimes {
@@ -166,22 +167,22 @@ for _ in 1...numberOfTimes {
 }
 ```
 
-Like function bodies, the for-loop's body is enclosed in curly braces. Also, like function bodies, we indent an extra time each time we open a curly brace!
+関数の中身のように、for-loopの中身は中カッコで挟まれます。また、関数の中身と同じように、中カッコの中はインデントをします。
 
-## Go for it!
+## やってみよう！
 
 > [challenge]
-> Now that you know how to implement "for-loops" (repeat a few lines of code), reimplement your `drawTriangle`, `drawSquare`, `drawPentagon`, and `drawHexagon` methods below. Make sure they are still resizeable and be sure to test them out!
+> "for-loops"の書き方が分かったところで(何行かのコードの繰り返し)、`drawTriangle`, `drawSquare`, `drawPentagon`,  `drawHexagon`の手法をそれぞれ修正してみましょう。修正後も大きさを調整できる関数であることを確かめましょう！
 
-# Passing Even More Data to Functions
+# 関数にもっとデータを渡す
 
-## Even more parameters
+## もっと多くのパラメタ
 
-So far we've seen functions with no parameters and functions with one parameter. Let's try defining a function with two parameters! Can you guess what it might be?
+さてここまでで、パラメタのない関数か、１つだけパラメタのある関数を見てきましたね。２つのパラメタを持つ関数を定義して見ましょう！どんな書き方か想像できますか？
 
-## Generalized polygon function
+## ポリゴン関数を一般化する
 
-You might have noticed where we have been heading: a `drawPolygon` function with parameters of `numberOfSides: Int` and `sideLength: Int`. Your function should look like this:
+`numberOfSides: Int`と`sideLength: Int`をパラメタに持つ`drawPolygon`関数を作るには:
 
 ```
 func drawPolygon(numberOfSides: Int, sideLength: Int) {
@@ -190,42 +191,42 @@ func drawPolygon(numberOfSides: Int, sideLength: Int) {
 ```
 
 > [info]
-> Notice how we comma-separate the parameters. You can define a function to take in as many parameters as you want -- you just need commas in-between each parameter!
+> パラメタ同士はカンマで区切ります。このようにカンマで区切っていけば、いくらでもパラメタを追加することができますよ！
 
-## Give it a shot
+## 試してみよう！
 
 > [challenge]
-> Create a `drawPolygon` function using the template above. You want to use a for-loop like we did on the last page!
+> 上のテンプレートを使って、`drawPolygon`関数を作りましょう。for ループを使うといいでしょう！
 
-## Calling functions with more than one parameter
+## １つ以上のパラメタを持つ関数を呼び出す
 
-How do you think this function would be called? A reasonable guess is that `drawPolygon(numberOfSides: 3, 100)` would create a triangle with sides of length `100` but no, that won't work!
+この関数を呼び出したい時は、どうしたらいいでしょうか？`drawPolygon(numberOfSides: 3, 100)` でしょうか？いや、これでは動きません！
 
-The correct (and only way) you can call the function above is with the format `drawPolygon(numberOfSides: 3, sideLength: 100)`.
+`drawPolygon(numberOfSides: 3, sideLength: 100)`.が正しい呼び出し方です。
 
-## What???
+## どういうこと？
 
-Some of you are now wondering why `drawPolygon(numberOfSides: 3, sideLength: 100)` works and `drawPolygon(numberOfSides: 3, 100)` does not. By default, Swift requires a parameter label for each parameter. If you do not explicitly specify a parameter label, it assumes you want to use the parameter name as the label too. This means the generalized format of calling a function with multiple parameters is:
+`drawPolygon(numberOfSides: 3, sideLength: 100)`は動くのに、`drawPolygon(numberOfSides: 3, 100)` はどうして動かないのでしょう。デフォルトでは、Swiftはそれぞれのパラメタに、パラメタラベルを必要とします。パラメタの名前を明言しなかったら、Swiftはパラメタの名前をラベルとして使いたいのだと推測してしまうのです。つまり、複数のパラメタを持つ関数の一般的フォーマットは下のようになります:
 
 ```
 functionName(parameterOneName: parameterOneValue, parameterTwoName: parameterTwoValue)
 ```
 
 > [challenge]
-> Test your `drawPolygon` function and make sure it works!
+>  `drawPolygon` を呼び出して、動くか確かめて見ましょう！
 
-# Returning data
+# データを返す
 
-## Return values
+## 戻り値
 
-There's one last thing functions can do: return data! Great code is readable code and returning values from functions will help you get things organized.
+最後にもう一つ、関数ができることがあります。データを返すことです！良いコードの条件は読みやすいことで、データを返す関数を使うと、綺麗に整理されたコードになります。
 
-Let's take a look at how to define a function with a return value.
+どのように定義をすれば良いか見てみましょう。
 
 > [info]
-> A full circle is 360 degrees or 2π radians. A half circle is 180 degrees or π radians. A quarter circle is 90 degrees or π/2 radians.
+> 円の一周は360度か、2πラジアンです。半周は180度で、πラジアンです。四分の一の円は、90度でπ/2ラジアンです。
 >
-> `M_PI` is a Swift constant that represents π as a `Double`
+> `M_PI` はSwiftが持つ定数で、Double型のπを表します。
 
 ```
 func radiansToDegrees(radians: Double) -> Double {
@@ -237,9 +238,9 @@ let piRadiansInDegrees = radiansToDegrees(radians: M_PI)
 let twoPiRadiansInDegrees = radiansToDegrees(radians: 2 * M_PI)
 ```
 
-## Defining functions with return values
+## 返り値を持つ関数を定義する
 
-**The general form of a function with a return value is:**
+**返り値を持つ関数の書き方:**
 
 ```
 func functionName() -> ReturnType {
@@ -248,33 +249,33 @@ func functionName() -> ReturnType {
 }
 ```
 
-You can add as many parameters as you would like but the important part is:
+パラメタはいくつでも追加できますが、大事なポイントがあります。
 
-1. `-> ReturnType` where `ReturnType` is the data type of the value you are returning (`Int`, `Double`, `String`, etc)
-2. `return valueToReturn` where `return` is a required keyword telling Swift to immediately exit the function and give the value back to it's caller. `valueToReturn` must be the same type as you specified earlier in `ReturnType`
+1. `-> ReturnType`: `ReturnType`には返したい値のデータ型を入力します。 (`Int`, `Double`, `String`, など)
+2. `return valueToReturn`: `return`は、Swiftにこの行で関数を終了して、`return` の後に書かれている値を返してね、と命令します。`valueToReturn`は`ReturnType`で定義したデータ型と同じでなくてはいけません。
 
 > [info]
-> The function must return a value of `ReturnType` with the `return` keyword no matter what!
+> この関数は何があっても`ReturnType`を返さなくてはいけません！
 
-## Degrees to radians
+## 角度からラジアンへ
 
-It's time for you to define your own function with a return value!
-
-> [challenge]
-> Write a `degreesToRadians` function. It should accept one parameter called `degrees` of type `Double` and return a `Double`.
->
-> **Hint**
->
-> You can convert from degrees to radians by inverting the math in the above function. Divide by `180` and multiply by `M_PI` (π).
->
-> Half of π is roughly 1.57, π is roughly 3.14, 2π is roughly 6.28. Make sure your function returns the correct values!
-
-# One more drawPolygon rewrite
+返り値を持つ関数を定義してみましょう！
 
 > [challenge]
-> Write a `calculateRotationForPolygon` function that takes one parameter called `sides` of type `Int` and returns a `Double`. Update your `drawPolygon` function to use `calculateRotationForPolygon`.
+> `degreesToRadians`を書いて、テストコードをアンコメントしましょう。 `Double`型の`degrees`をパラメタとして受け取り、`Double`を返します。
+>
+> **ヒント**
+>
+> 角度からラジアンへの変換の計算は、上に書いてある関数の計算を逆にして使えますね。`180`で割って、`Double.pi` (π)をかける。
+>
+>  1/2πはだいたい1.57、π はだいたい3.14, 2πは約6.28です。書いた関数がこの数字と合っているか確かめましょう。
+
+# drawPolygonを書き直す
+
+> [challenge]
+>  `calculateRotationForPolygon`関数を下に作ります。`Int`型の`sides`をパラメタとして受け取り、`Double`の値を返します。前に書いた `drawPolygon`関数をコピーしてきて使いましょう。
 
 <!--  -->
 
 > [info]
-> Remember that you will need to _cast_ `sides` from an `Int` to a `Double`. Swift is very specific about types! You can _cast_ or convert it with `Double(sides)`.
+> `sides(辺の数)`は `Int` から `Double` へ _キャスト(変換)_  する必要があります。Swiftはデータ型にとても厳しいのです！`Double(sides)`と書くことで、_キャスト(変換)_ することができます。

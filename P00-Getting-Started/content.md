@@ -1,92 +1,93 @@
 ---
-title: "Introducing Functions"
+title: "関数入門"
 slug: functions
 ---
 
 > [info]
-> Only do this tutorial if the previous Functions Playground did not work on your computer!
+> これは関数のPlaygroundがうまく動かなかった人向けです。
 
-Now that we've learned _variables_, let's move on to _functions_. In this _Swift Playground_, you will learn how to group code into reusable blocks called _functions_. This will allow you to organize your code to be highly reusable. You'll learn how to call to call functions, pass data into them and return data from them. Throughout this playground you will create some pretty cool art! Get ready to be creative :)
+変数を学んだので、今度は _関数_ を学んでいきましょう！
 
 > [action]
 >
-1. Download the Functions Xcode project from [here](https://github.com/MakeSchool-Tutorials/Functions-OSX-Starter/archive/swift4.zip).
-1. Double-click the downloaded zip file to "extract it".
-1. Inside the newly extracted folder you should see a file named `Functions-OSX.xcodeproj`, drag this into your "Make School Projects" folder.
-1. Open your "Make School Projects" folder and double-click `Functions-OSX.xcodeproj` to get started!
+1. [ここ](https://github.com/MakeSchool-Tutorials/Functions-OSX-Starter/archive/swift4.zip)からファイルをダウンロードします。
+1. ダウンロードしたファイルを解凍します。
+1. "Make School Projects"フォルダーに`Functions-OSX.xcodeproj`移します。
+1. `Functions-OSX.xcodeproj` を開いて、はじめましょう！
 
-# Exploring Xcode
+# Xcodeを触ってみよう
 
-Your screen should look something like this:
+Xcodeの画面は下のようになっているはずです:
 
 ![The Xcode window](./xcode_window.png)
 
-Let's dissect the different user interface elements we're seeing here:
+xcodeのいくつかの要素:
 
-- On the left hand side, there is your __Navigator__: This lists all the files that are in the project hierarchy. You can _single-click_ on any one of the files there, to change the center pane to display the file you want to look at. Note that _double-clicking_ will open up a new window containing the file instead, so make sure you always single-click to navigate to files. Try navigating to the file `Drawing.swift` now.
-  - There are multiple tabs available within the Navigator section, which you can reveal by clicking on the icons on the top, or by using the keyboard shortcuts ⌘1, ⌘2, etc. Particularly useful tabs include the __Find__ tab (⌘3) – which lets you do a full text search on your entire project – and the __Issues__ tab (⌘4), which lets you know of any compile-time or run-time errors and warnings you may have.
-  - At the bottom left corner of the navigator, there's a "+" sign. If you click it, you can create new files in your project hierarchy (You can also use the handy shortcut ⌘N). Note that the file will be placed under the current group that your navigator has selected: therefore, make sure you click a group you want your new file to be under, before you add.
-- On the right hand side is your __Utilities__ sidebar: This will show you quick information about the file you have opened currently; in the case of a `.swift` file, it will tell you information like the file path that it resides in, its group path, and various text settings like the text encoding and tab setting.
-- The center pane you've been staring at is the __Editor__ – where you edit your code! Besides obviously being able to make changes to your code, you can navigate to different files via the breadcrumb menu at the top of the pane.
-- There is a __Debug Area__ pane at the bottom side of your window; this would display your `print()` statements if you decided to run any from your code. If you don't see it, click the middle button in the 3-button group at the top right corner of your window, or press the shortcut ⇧⌘Y. The debug area is very useful for testing your program output!
-- Lastly, at the top left corner of the window – right next to the window close/minimize/maximize buttons – are your __Play__, __Stop__, and __Device Selection__ buttons! Hitting Play will compile and run your code, and hitting Stop will stop execution of your code.
+- __Navigator(ナビゲーター)__ (左側の部分): これはこのプロジェクトの中に入っている全てのファイルのリストです。クリックをしたファイルが画面のセンターに表示されます。ダブルクリックをしてしまうと、新しいウィンドウが開いてしまうので、シングルクリックをするようにしましょう。`Drawing.swift`をクリックシテみましょう。
+  - ナビゲーターセクションにはいくつかのタブがあります。⌘1, ⌘2を押しても切り替えられますし、アイコンをクリックしても切り替えることができます。__Find（ファインド）__ タブ (⌘3)では、このプロジェクト内のファイルなどの検索をすることができます。__Issues（イシュー）__ タブ (⌘4)では、コンパイルタイム・ランタイムエラーや警告を教えてくれます。
+  - ナビゲーターの左下の角には"+"サインがありますね。これをクリックすると、このプロジェクト内に新しくファイルを作ることができます。（⌘Nショートカットを使うこともできます。）ファイルを追加する前に、追加したい場所のフォルダを選択してから追加するようにしましょう。
+- __Utilities(ユーティリティ)__ （右側の部分): This will show you quick information about the file you have opened currently; in the case of a `.swift` file, it will tell you information like the file path that it resides in, its group path, and various text settings like the text encoding and tab setting.今開いているファイルの情報を簡単に見られます。`.swift`ファイルの場合、ファイルパス（ファイルの場所）や、エンコーディングの設定などが表示されます。
+- 真ん中の部分が、__Editor(エディター)__ です。ここにコードを書いていくのです！
+- 下の部分にあるのが __Debug Area(デバッグエリア)__ です。`print()`をした結果が表示されます。もしこのエリアが見えなかったら、右上にある３つのボタンの中の真ん中を押すか、⇧⌘Yをクリックしましょう。デバックエリアは作ったプログラムをテストするのにとても便利です！
+- 最後に、左上の角にあるボタンが、__Play（プレイ）__, __Stop（ストップ）__, and __Device Selection（デバイス選択）__ ボタンです！
 
 > [info]
-> Don't worry about memorizing all of this. You can always come back to reference it whenever you want. The more you use Xcode, the more this will all become second nature!
+> 覚える必要はありません。忘れたらいつでも戻れば大丈夫です。Xcodeを使えば使うほど、慣れていきますよ！
 
-# Running the starter code
+# スターターコードを実行する
 
-Now that we have a grasp of the Xcode interface, let's try running the starter code to see what we're looking at!
+だいたいXcodeの使い方を見たところで、コードを実行してみましょう！
 
 > [action]
-> Run the starter code, to do so, press the Play button!
+> Playボタンを押してコードを実行しましょう！
 >
-> A new application entitled "Functions-OSX" should open up, it should load up the app, displaying a an empty canvas!
+> 新しい"Functions-OSX"というアプリが開き、何も描かれていないキャンパスが表示されるはずです！
 > ![A screenshot with the project running.](./default_functions_window.png)
 
-Great! We're ready to get started!
+やった！これで準備完了です。
 
-# Becoming Functional
+# 関数
 
-Now that you have some control over variables, it's time to move on to _functions_. _Functions_ are chunks of code that you can reuse by _calling the function_. You will be working with a special drawing tool throughout most of this Playground. The pictures will start off simple and build up in complexity as you learn more and experiment.
+変数の使い方がいたについてきたところで、今度は関数について学びます。関数はある程度まとまったコードのブロックのようなもので、繰り返し使いまわすことができます。ここではお絵かきツールを使って勉強します。最初はシンプルな絵からはじめ、新しいことを覚えるにしたがって徐々に複雑になっていきます。
 
-## Let's call a function!
+##  関数を呼び出してみよう！
 
-We're going to jump right into things so you can call your first function.
+関数を呼び出せるようになるために、さっそく始めましょう。次のコードを入力し、画面ビジュアルの変化を見てください。
 
 > [action]
-> Enter the following line of code below `// drawing code goes below here` but above `// drawing code goes above here`.
+> `// drawing code goes below here` より下、`// drawing code goes above here`より上に下のコードを入力しましょう。
 >
 ```
 moveFifty()
 ```
-> Run the project (play button at the top left), and watch the visualization to see what happens!
+> コードを実行して、何が起きるか見てみましょう。
 
 <!--  -->
 
 > [info]
-> Lines that start with `//` are called comments. They allow you to type messages and hints to yourself or other developers reading your code. `//` tells the computer to ignore anything on the same line after it.
+> `//` で始まる行はコメントです。この行はコンピュータが無視するので、メモやヒントなど、何でも書いて大丈夫です。
 
-# What did that do?
+# なにをしたの？
 
-What can we infer about _function calls_ from the line we just entered?
+これから関数の呼び出しについて何が分かるでしょうか。
 
-## Anatomy of a function call
+## 関数呼び出しの仕組み
 
-A _function call_ looks a lot like a variable but it has parentheses after it. Function calls take the form of:
+関数の呼び出しは、変数に似たものに後ろにカッコが付いています。次のような形をとります。
 
 ```
 functionName()
 ```
 
-In this case, you called a function named `moveFifty`. What happened in the visualization? You should have seen the triangle move `50 units` and leave behind a line.
+この場合、`moveFifty`という関数を呼び出したことになります。画面ビジュアルではなにが起きましたか？三角形が50単位分動いて、後に線を残したのが見えましたか？
 
-It's important to keep in mind that functions (like variables) must be defined before they are called. We have already defined the `rotateNinety()` function for you in another file. `rotateNinety()` will work anywhere but you cannot just call `moveThirty()` and expect it to work. A `moveThirty` has not been defined yet. We'll show you how to define your own functions soon but let's focus on calling them for now.
+関数は、変数と同様に呼び出す前にしっかりと定義しなければならない、ということを覚えておきましょう。 `moveFifty()`関数の定義は、別のファイルにあらかじめ用意しておきました。`moveFifty()`はどこでも使えますが、いきなり`moveThirty()`と書いても何もおきません。`moveThirty`はまだ定義されていないからです。関数の定義のしかたは後で学びますが、まずは呼び出すことに集中しましょう。
+
 
 > [challenge]
-> What happens if you call the `moveFifty` function again after the last line you entered? What happens if you call it a third time? Run the project to test it out!
+> 下のスペースで `moveFifty`関数を再び呼び出すとどうなるでしょうか？3回目はどうでしょう？
 
 <!--  -->
 
 > [info]
-> Make sure each function call is on a separate line and don't forget the parentheses!
+> 関数の呼び出しは一つずつ異なる行にあることを確かめましょう。カッコも忘れずに！

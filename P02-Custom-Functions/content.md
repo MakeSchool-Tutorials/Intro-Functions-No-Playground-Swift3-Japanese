@@ -1,66 +1,68 @@
 ---
-title: "Custom Functions"
+title: "カスタマイズされた関数"
 slug: custom-functions
 ---
 
-Let's try creating our own, custom function. We just developed a procedure for drawing a square, wouldn't it be nice to have a `drawSquare()` function?
+自分の関数を作ってみましょう。さっき四角を描くコードを書きましたね。これが`drawSquare()`関数として使い回しできれば便利でしょう？
 
-## Defining functions
+## 関数の定義
 
-We've already learned how to call functions, but how do we create our own?
+関数の呼び出しの方法は既に勉強しましたが、自分の関数はどうやって作るのでしょう？
 
 ```
 func functionName() {
-    // "function body"
-    // function's code goes here
+    // “関数コードの中身”
+    // 関数のコードはここに入力
 }
 ```
 
-We use the keyword `func` to define a function (similar to how we use `var` for variables and `let` for constants). The function's name (`functionName` in our example) comes after the `func` keyword and it is followed immediately by parentheses. This is then followed by This is then followed by matched curly braces `{` and `}`. These are located near the enter key on your keyboard -- you'll need to hold the shift key to type them.
+関数は`func`というキーワードを使って定義します。(変数を`var`で、定数を`let`で定義するのと似ていますね)　関数の名前(この場合は`functionName`)は`func`の後に入力し、カッコを付けます。続いて中カッコ(`{`と`}`)を入力します。キーボードのエンターキーのそばにあります。Shiftキーを押しながら入力します。
 
-All your function's code should be put inside the curly braces. Any code inside the curly braces will be executed whenever the function is called.
+関数のコードはすべて中カッコの中におさめましょう。関数を呼び出すと、中カッコの中のコードが実行されます。
 
-## Your first function
+## はじめての関数
 
 > [challenge]
-> Try defining your own `drawSquare` function below `// custom functions go below here` but above `// custom functions go above here`. Use the sample function above as a reference but make sure to change the name! You should be able to copy your square drawing code from before and paste it inside of the function body.
+> 自分なりの`drawSquare`関数を定義してみましょう。上の関数を参考にしつつ、必ず名前を変えましょう！四角を描くコードを前のページからコピーし、“関数コードの中身”に張り付けると簡単にできます。
 
 <!--  -->
 
 > [action]
-> Now that you have the function defined, empty out all the code below `// drawing code goes below here` but above `// drawing code goes above here`. Run the project to test it out!
+> カスタム関数を作ったので、`// drawing code goes below here`と
+`// drawing code goes above here`の間のコードはいりませんね。消してみましょう。
 
-## Did it work?
+## うまく動きましたか？
 
-Did the visualization draw a square like you planned it to? Why not?
+画面上にイメージ通りに四角が描かれましたか？もし失敗したなら、それはどうしてでしょう？
 
-**Defining a function does not execute the code!**
+**関数の定義をしてもコードは実行されない**
 
-You still must call the function to execute it's code. If you followed the steps closely, nothing will have happened to your drawing visualization because you only defined a new function, you never called it.
+コードを実行するには、その関数を呼び出さなくてはなりません。ステップを丁寧にこなしても、画面ビジュアルには何も変化がなかったでしょう。新しい関数を定義しただけで、呼び出していなかったからです。上に戻って新しい行(中カッコを閉じた後)に`drawSquare`関数を呼び出すコードを書いてみましょう。これで画面上に四角が出てくるはずです。
+
 
 > [action]
-> Go back up and add a new line of code to call `drawSquare` (below `// drawing code goes below here` but above `// drawing code goes above here`). Now run the project and you should see a square drawing on the screen!
+> `// drawing code goes below here` と `// drawing code goes above here`の間に、`drawSquare`関数を呼び出しましょう。
 
-## Naming functions
+## 関数に名前を付ける
 
-Keep in mind that function names must follow the same rules at variable names.
+関数の名前は、変数の名前と同じルールで付けます。
 
-- must start with a letter of the alphabet
-- may contain any alphanumeric character, plus some additional ones, like underscores
-- may not contain spaces
+- アルファベットではじめる
+- 英数字と特定の記号が使える
+- 空欄は使わない
 
-## Indentation
+## インデント
 
-You might have also noticed that we indented everything in the "function body". _It is common practice in programming to indent once (one press of the tab key if Xcode doesn't do it automatically) for every time you open a curly brace._ __Pay attention to our indentation and try to match it when you code. It's really important for readability that you follow this practice!__
+ところで、"関数の中身"のテキストはすべてインデントされていることに気が付きましたか？プログラミングでは、中カッコの中はインデントするのが一般的です。(Xcodeが自動的にインデントしない場合は、キーを押すだけ簡単にできます)お手本のインデントを真似してコードを書いてみましょう。より読みやすくするためには大切なことです。
 
-# A "bigger" challenge
+# 「大きな」チャレンジ
 
-## Drawing a bigger square
+## もっと大きな四角を描く
 
 > [challenge]
-> Time to put those function skills to the test. In the last page you should have defined a `drawSquare` function. Define a `drawBigSquare` function after your `drawSquare` function. This new function should draw a square with sides _twice_ the length of your previous `drawSquare` function.
+> 新しいスキルを試してみましょう。前のページでは `drawSquare`関数を定義しましたね。下のスペースで`drawBigSquare`の関数を定義してみましょう。今度は、`drawSquare`関数と比べて辺の長さが2倍の四角を描けるようにしましょう。
 
 <!--  -->
 
 > [info]
-> Remember to call the `drawBigSquare` function instead of the `drawSquare` function once it's defined and make sure the visualization works as expected.
+> ひとたび `drawBigSquare`関数が定義できたら、呼び出しをして画面上にイメージ通りの四角が描かれるか確認しましょう。
